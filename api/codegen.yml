@@ -1,0 +1,15 @@
+overwrite: true
+schema:
+  './src/schema/**.ts':
+            noRequire: true
+documents: null
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"
+    config:
+      resolverTypeWrapperSignature: "Promise<T | undefined> | T"
+      contextType: ../context#IContext
+require:
+  - ts-node/register
