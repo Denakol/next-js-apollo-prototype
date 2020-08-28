@@ -12,29 +12,70 @@ export type Scalars = {
   Float: number;
 };
 
-export type Clothes = {
-  __typename?: 'Clothes';
+export enum ShirtColor {
+  White = 'white',
+  Grey = 'grey',
+  Blue = 'blue'
+}
+
+export type Shirt = {
+  __typename?: 'Shirt';
   id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+  color: ShirtColor;
+  size: Scalars['Int'];
 };
 
-export type ClothesInput = {
+export type Pants = {
+  __typename?: 'Pants';
   id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+  color: Scalars['String'];
+  W: Scalars['Int'];
+  L: Scalars['Int'];
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  _?: Maybe<Scalars['Boolean']>;
-  createClothes?: Maybe<Clothes>;
-};
+export type Clothes = Shirt | Pants;
 
-
-export type MutationCreateClothesArgs = {
-  input: ClothesInput;
+export type ClothesQueryInput = {
+  name?: Maybe<Scalars['String']>;
+  color: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
   _?: Maybe<Scalars['Boolean']>;
+  clothes: Array<Maybe<Clothes>>;
+};
+
+export type ShirtInput = {
+  name?: Maybe<Scalars['String']>;
+  color: ShirtColor;
+  size: Scalars['Int'];
+};
+
+export type PantsInput = {
+  name?: Maybe<Scalars['String']>;
+  color: Scalars['String'];
+  W: Scalars['Int'];
+  L: Scalars['Int'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  _?: Maybe<Scalars['Boolean']>;
+  createPants?: Maybe<Pants>;
+  createShirt?: Maybe<Shirt>;
+};
+
+
+export type MutationCreatePantsArgs = {
+  input: PantsInput;
+};
+
+
+export type MutationCreateShirtArgs = {
+  input: ShirtInput;
 };
 
 export type Subscription = {
@@ -120,40 +161,69 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Clothes: ResolverTypeWrapper<Clothes>;
+  ShirtColor: ShirtColor;
+  Shirt: ResolverTypeWrapper<Shirt>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  ClothesInput: ClothesInput;
-  Mutation: ResolverTypeWrapper<{}>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Query: ResolverTypeWrapper<{}>;
-  Subscription: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  Pants: ResolverTypeWrapper<Pants>;
+  Clothes: ResolversTypes['Shirt'] | ResolversTypes['Pants'];
+  ClothesQueryInput: ClothesQueryInput;
+  Query: ResolverTypeWrapper<{}>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  ShirtInput: ShirtInput;
+  PantsInput: PantsInput;
+  Mutation: ResolverTypeWrapper<{}>;
+  Subscription: ResolverTypeWrapper<{}>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Clothes: Clothes;
+  Shirt: Shirt;
   ID: Scalars['ID'];
-  ClothesInput: ClothesInput;
-  Mutation: {};
-  Boolean: Scalars['Boolean'];
-  Query: {};
-  Subscription: {};
   String: Scalars['String'];
+  Int: Scalars['Int'];
+  Pants: Pants;
+  Clothes: ResolversParentTypes['Shirt'] | ResolversParentTypes['Pants'];
+  ClothesQueryInput: ClothesQueryInput;
+  Query: {};
+  Boolean: Scalars['Boolean'];
+  ShirtInput: ShirtInput;
+  PantsInput: PantsInput;
+  Mutation: {};
+  Subscription: {};
 };
 
-export type ClothesResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Clothes'] = ResolversParentTypes['Clothes']> = {
+export type ShirtResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Shirt'] = ResolversParentTypes['Shirt']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  color?: Resolver<ResolversTypes['ShirtColor'], ParentType, ContextType>;
+  size?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
-export type MutationResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  createClothes?: Resolver<Maybe<ResolversTypes['Clothes']>, ParentType, ContextType, RequireFields<MutationCreateClothesArgs, 'input'>>;
+export type PantsResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Pants'] = ResolversParentTypes['Pants']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  color?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  W?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  L?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
+export type ClothesResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Clothes'] = ResolversParentTypes['Clothes']> = {
+  __resolveType: TypeResolveFn<'Shirt' | 'Pants', ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  clothes?: Resolver<Array<Maybe<ResolversTypes['Clothes']>>, ParentType, ContextType>;
+};
+
+export type MutationResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  createPants?: Resolver<Maybe<ResolversTypes['Pants']>, ParentType, ContextType, RequireFields<MutationCreatePantsArgs, 'input'>>;
+  createShirt?: Resolver<Maybe<ResolversTypes['Shirt']>, ParentType, ContextType, RequireFields<MutationCreateShirtArgs, 'input'>>;
 };
 
 export type SubscriptionResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
@@ -161,9 +231,11 @@ export type SubscriptionResolvers<ContextType = IContext, ParentType extends Res
 };
 
 export type Resolvers<ContextType = IContext> = {
+  Shirt?: ShirtResolvers<ContextType>;
+  Pants?: PantsResolvers<ContextType>;
   Clothes?: ClothesResolvers<ContextType>;
-  Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Subscription?: SubscriptionResolvers<ContextType>;
 };
 
