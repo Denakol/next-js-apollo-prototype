@@ -1,0 +1,12 @@
+query getClothes {
+  clothes {
+    ... on Pants {
+    id
+      name
+    }
+    ... on Shirt {
+    id
+      name
+    }
+  }
+}

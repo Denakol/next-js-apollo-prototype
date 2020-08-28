@@ -8,6 +8,7 @@ module.exports = {
     browser: true,
     node: true,
   },
+  ignorePatterns: ['api/graphql.tsx'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -36,6 +37,7 @@ module.exports = {
       },
     ],*/
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   settings: {
     react: {
