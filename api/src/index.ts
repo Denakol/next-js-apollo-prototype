@@ -14,10 +14,10 @@ const startServer = async () => {
   })
 
   try {
-    //const connection = await createConnection();
+    const connection = await createConnection()
     const server = new ApolloServer({
       schema,
-      context: new Context(null),
+      context: new Context(connection),
     })
 
     server.listen({ port: 4000 }, () => console.log(`🚀 Server ready at http://localhost:4000`))

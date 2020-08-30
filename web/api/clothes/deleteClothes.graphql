@@ -1,0 +1,5 @@
+mutation DeleteClothes($input: DeleteClothesInput!) {
+    deleteClothes(input: $input) {
+        id
+    }
+}

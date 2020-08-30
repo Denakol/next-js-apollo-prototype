@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { Layout } from '../components'
 
 const IndexPage = () => (
-  <Layout title="Home ">
+  <>
     <h1>Hello 👋</h1>
     <p>
       <Link href="/clothes">
@@ -14,7 +13,7 @@ const IndexPage = () => (
         <a>About project</a>
       </Link>
     </p>
-  </Layout>
+  </>
 )
 
 export default IndexPage

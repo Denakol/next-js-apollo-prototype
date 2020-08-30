@@ -1,60 +1,17 @@
 import { useCallback, useState } from 'react'
-import { PantsInput, ShirtInput, useCreatePantsMutation, useCreateShirtMutation } from '../../api/graphql'
-import { AddPantsForm, AddShirtForm } from './components'
+import { PantsInput, ShirtInput } from '../../api/graphql'
+import { AddPantsForm, AddShirtForm } from '../../components/Clothes/components'
 import { useRouter } from 'next/router'
-import { Card, Checkbox, Field, Layout, PageHeader } from '../../components'
+import { Card, Checkbox, Field, PageHeader } from '../../components'
 import classes from './add.module.scss'
-import { gql } from '@apollo/client'
+import { useCreatePants, useCreateShirt } from '../../components/Clothes/hooks'
 
 const AddNewClothes = () => {
   const router = useRouter()
-
   const [isShirts, setIsShirts] = useState(true)
 
-  const [createPants, { loading: createPantsLoading }] = useCreatePantsMutation({
-    update(cache, { data }) {
-      cache.modify({
-        fields: {
-          clothes(existingClothes = []) {
-            if (data) {
-              const newTodoRef = cache.writeFragment({
-                data: data.createPants,
-                fragment: gql`
-                  fragment NewTodo on Pants {
-                    id
-                  }
-                `,
-              })
-              return [...existingClothes, newTodoRef]
-            }
-            return [...existingClothes]
-          },
-        },
-      })
-    },
-  })
-  const [createShirt, { loading: createShirtLoading }] = useCreateShirtMutation({
-    update(cache, { data }) {
-      cache.modify({
-        fields: {
-          clothes(existingClothes = []) {
-            if (data) {
-              const newTodoRef = cache.writeFragment({
-                data: data.createShirt,
-                fragment: gql`
-                  fragment NewTodo on Shirt {
-                    id
-                  }
-                `,
-              })
-              return [...existingClothes, newTodoRef]
-            }
-            return [...existingClothes]
-          },
-        },
-      })
-    },
-  })
+  const { create: createPants, loading: createPantsLoading } = useCreatePants()
+  const { create: createShirt, loading: createShirtLoading } = useCreateShirt()
 
   const redirectToTable = useCallback(() => {
     router.push('/clothes')
@@ -77,7 +34,7 @@ const AddNewClothes = () => {
   )
 
   return (
-    <Layout>
+    <>
       <PageHeader text="Add New Clothes" />
       <Card>
         <Field label="Choose Type">
@@ -121,7 +78,7 @@ const AddNewClothes = () => {
           />
         )}
       </Card>
-    </Layout>
+    </>
   )
 }
 export default AddNewClothes

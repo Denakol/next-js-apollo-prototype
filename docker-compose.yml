@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: './web'
+    links:
+      - api
+    ports:
+      - "3000:3000"
+    env_file:
+        - ./web/.env
+    volumes:
+      - "./web:/web"
+  api:
+    build: './api'
+    links:
+      - db
+    ports:
+      - "4000:4000"
+    volumes:
+      - "./api:/api"
+  db:
+    image: "mysql:5.7.24"
+    container_name: "db"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: "test"
+      MYSQL_PASSWORD: "test"
+      MYSQL_DATABASE: 'test'

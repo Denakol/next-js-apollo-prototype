@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { ShirtColor, ShirtInput } from '../../../api/graphql'
 import { yupResolver } from '@hookform/resolvers'
-import { Button, Field, Input } from '../../../components'
+import { Button, Field, Input } from '../../index'
 
 interface AddShirtFormProps {
   isLoading: boolean

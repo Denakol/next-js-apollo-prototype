@@ -1,0 +1,16 @@
+
+FROM  node
+
+RUN mkdir -p /usr/src
+
+WORKDIR /usr/src
+
+COPY . /usr/src
+
+RUN yarn install
+
+RUN yarn build
+
+CMD [ "yarn", "start" ]
+
+EXPOSE 4000

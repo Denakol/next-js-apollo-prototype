@@ -43,6 +43,19 @@
 
 }
 
+.danger {
+  @include BaseButton();
+  background-color: $danger;
+  color: white;
+
+  &:hover {
+    box-shadow: 0 16px 48px 0 transparentize($danger, 0.85)
+  }
+  &:active {
+    background-color: darken($danger, 5%);
+  }
+}
+
 .secondary + .primary{
   margin-left: 16px;
 }

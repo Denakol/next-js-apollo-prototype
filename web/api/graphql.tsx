@@ -22,6 +22,7 @@ export type Mutation = {
   _?: Maybe<Scalars['Boolean']>;
   createShirt?: Maybe<Shirt>;
   createPants?: Maybe<Pants>;
+  deleteClothes?: Maybe<EntityDeleted>;
 };
 
 
@@ -32,6 +33,11 @@ export type MutationCreateShirtArgs = {
 
 export type MutationCreatePantsArgs = {
   input: PantsInput;
+};
+
+
+export type MutationDeleteClothesArgs = {
+  input: DeleteClothesInput;
 };
 
 export type Subscription = {
@@ -82,6 +88,15 @@ export type PantsInput = {
   L: Scalars['Int'];
 };
 
+export type DeleteClothesInput = {
+  id: Scalars['ID'];
+};
+
+export type EntityDeleted = {
+  __typename?: 'EntityDeleted';
+  id: Scalars['ID'];
+};
+
 export type CreatePantsMutationVariables = Exact<{
   input: PantsInput;
 }>;
@@ -105,6 +120,19 @@ export type CreateShirtMutation = (
   & { createShirt?: Maybe<(
     { __typename?: 'Shirt' }
     & Pick<Shirt, 'id'>
+  )> }
+);
+
+export type DeleteClothesMutationVariables = Exact<{
+  input: DeleteClothesInput;
+}>;
+
+
+export type DeleteClothesMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteClothes?: Maybe<(
+    { __typename?: 'EntityDeleted' }
+    & Pick<EntityDeleted, 'id'>
   )> }
 );
 
@@ -187,6 +215,38 @@ export function useCreateShirtMutation(baseOptions?: Apollo.MutationHookOptions<
 export type CreateShirtMutationHookResult = ReturnType<typeof useCreateShirtMutation>;
 export type CreateShirtMutationResult = Apollo.MutationResult<CreateShirtMutation>;
 export type CreateShirtMutationOptions = Apollo.BaseMutationOptions<CreateShirtMutation, CreateShirtMutationVariables>;
+export const DeleteClothesDocument = gql`
+    mutation DeleteClothes($input: DeleteClothesInput!) {
+  deleteClothes(input: $input) {
+    id
+  }
+}
+    `;
+export type DeleteClothesMutationFn = Apollo.MutationFunction<DeleteClothesMutation, DeleteClothesMutationVariables>;
+
+/**
+ * __useDeleteClothesMutation__
+ *
+ * To run a mutation, you first call `useDeleteClothesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteClothesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteClothesMutation, { data, loading, error }] = useDeleteClothesMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteClothesMutation(baseOptions?: Apollo.MutationHookOptions<DeleteClothesMutation, DeleteClothesMutationVariables>) {
+        return Apollo.useMutation<DeleteClothesMutation, DeleteClothesMutationVariables>(DeleteClothesDocument, baseOptions);
+      }
+export type DeleteClothesMutationHookResult = ReturnType<typeof useDeleteClothesMutation>;
+export type DeleteClothesMutationResult = Apollo.MutationResult<DeleteClothesMutation>;
+export type DeleteClothesMutationOptions = Apollo.BaseMutationOptions<DeleteClothesMutation, DeleteClothesMutationVariables>;
 export const GetClothesDocument = gql`
     query getClothes {
   clothes {

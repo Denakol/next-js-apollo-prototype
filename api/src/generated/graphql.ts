@@ -61,11 +61,21 @@ export type PantsInput = {
   L: Scalars['Int'];
 };
 
+export type DeleteClothesInput = {
+  id: Scalars['ID'];
+};
+
+export type EntityDeleted = {
+  __typename?: 'EntityDeleted';
+  id: Scalars['ID'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   _?: Maybe<Scalars['Boolean']>;
   createPants?: Maybe<Pants>;
   createShirt?: Maybe<Shirt>;
+  deleteClothes?: Maybe<EntityDeleted>;
 };
 
 
@@ -76,6 +86,11 @@ export type MutationCreatePantsArgs = {
 
 export type MutationCreateShirtArgs = {
   input: ShirtInput;
+};
+
+
+export type MutationDeleteClothesArgs = {
+  input: DeleteClothesInput;
 };
 
 export type Subscription = {
@@ -173,6 +188,8 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   ShirtInput: ShirtInput;
   PantsInput: PantsInput;
+  DeleteClothesInput: DeleteClothesInput;
+  EntityDeleted: ResolverTypeWrapper<EntityDeleted>;
   Mutation: ResolverTypeWrapper<{}>;
   Subscription: ResolverTypeWrapper<{}>;
 };
@@ -190,6 +207,8 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   ShirtInput: ShirtInput;
   PantsInput: PantsInput;
+  DeleteClothesInput: DeleteClothesInput;
+  EntityDeleted: EntityDeleted;
   Mutation: {};
   Subscription: {};
 };
@@ -220,10 +239,16 @@ export type QueryResolvers<ContextType = IContext, ParentType extends ResolversP
   clothes?: Resolver<Array<ResolversTypes['Clothes']>, ParentType, ContextType>;
 };
 
+export type EntityDeletedResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['EntityDeleted'] = ResolversParentTypes['EntityDeleted']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
+};
+
 export type MutationResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   createPants?: Resolver<Maybe<ResolversTypes['Pants']>, ParentType, ContextType, RequireFields<MutationCreatePantsArgs, 'input'>>;
   createShirt?: Resolver<Maybe<ResolversTypes['Shirt']>, ParentType, ContextType, RequireFields<MutationCreateShirtArgs, 'input'>>;
+  deleteClothes?: Resolver<Maybe<ResolversTypes['EntityDeleted']>, ParentType, ContextType, RequireFields<MutationDeleteClothesArgs, 'input'>>;
 };
 
 export type SubscriptionResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
@@ -235,6 +260,7 @@ export type Resolvers<ContextType = IContext> = {
   Pants?: PantsResolvers<ContextType>;
   Clothes?: ClothesResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  EntityDeleted?: EntityDeletedResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Subscription?: SubscriptionResolvers<ContextType>;
 };

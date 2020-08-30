@@ -46,8 +46,17 @@ export default gql`
     L: Int!
   }
 
+  input DeleteClothesInput {
+    id: ID!
+  }
+
+  type EntityDeleted {
+    id: ID!
+  }
+
   extend type Mutation {
     createShirt(input: ShirtInput!): Shirt
     createPants(input: PantsInput!): Pants
+    deleteClothes(input: DeleteClothesInput!): EntityDeleted
   }
 `

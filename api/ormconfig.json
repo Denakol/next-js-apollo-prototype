@@ -1,24 +1,24 @@
 {
    "type": "mysql",
-   "host": "localhost",
+   "host": "db",
    "port": 3306,
-   "username": "test",
-   "password": "test",
+   "username": "root",
+   "password": "root",
    "database": "test",
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/data/entity/**/*.ts"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "src/data/migration/**/*.ts"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "src/data/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "src/data/entity",
+      "migrationsDir": "src/data/migration",
+      "subscribersDir": "src/data/subscriber"
    }
 }

@@ -2,7 +2,7 @@ import { PantsInput } from '../../../api/graphql'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers'
-import { Button, Field, Input } from '../../../components'
+import { Button, Field, Input } from '../../index'
 
 interface AddPantsFormProps {
   isLoading: boolean
