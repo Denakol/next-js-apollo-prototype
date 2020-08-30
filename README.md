@@ -1,4 +1,4 @@
-# Prototype for quick bootstrapping apps 
+# Prototype for creation apps quickly
 
 #### Docker
 
