@@ -1,5 +1,5 @@
 import { ApolloProvider } from '@apollo/client'
-import { useApollo } from '../lib/apolloClient'
+import { useApollo } from '../api/apolloClient'
 import { AppProps } from 'next/app'
 import '../theme/style.scss'
 import { Layout } from '../components/Layout'
