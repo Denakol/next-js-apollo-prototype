@@ -1,0 +1,5 @@
+mutation CreateShirt($input: ShirtInput!) {
+    createShirt(input: $input) {
+        id
+    }
+}

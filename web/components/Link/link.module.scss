@@ -1,0 +1,10 @@
+@import "theme/colors";
+
+.link {
+  color: $primary;
+  text-decoration: none;
+}
+
+.activeLink{
+  text-decoration: underline;
+}

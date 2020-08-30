@@ -14,7 +14,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   _?: Maybe<Scalars['Boolean']>;
-  clothes: Array<Maybe<Clothes>>;
+  clothes: Array<Clothes>;
 };
 
 export type Mutation = {
@@ -49,7 +49,7 @@ export type Shirt = {
   __typename?: 'Shirt';
   id: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
-  color: ShirtColor;
+  color: Scalars['String'];
   size: Scalars['Int'];
 };
 
@@ -82,31 +82,126 @@ export type PantsInput = {
   L: Scalars['Int'];
 };
 
+export type CreatePantsMutationVariables = Exact<{
+  input: PantsInput;
+}>;
+
+
+export type CreatePantsMutation = (
+  { __typename?: 'Mutation' }
+  & { createPants?: Maybe<(
+    { __typename?: 'Pants' }
+    & Pick<Pants, 'id'>
+  )> }
+);
+
+export type CreateShirtMutationVariables = Exact<{
+  input: ShirtInput;
+}>;
+
+
+export type CreateShirtMutation = (
+  { __typename?: 'Mutation' }
+  & { createShirt?: Maybe<(
+    { __typename?: 'Shirt' }
+    & Pick<Shirt, 'id'>
+  )> }
+);
+
 export type GetClothesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetClothesQuery = (
   { __typename?: 'Query' }
-  & { clothes: Array<Maybe<(
+  & { clothes: Array<(
     { __typename?: 'Shirt' }
-    & Pick<Shirt, 'id' | 'name'>
+    & Pick<Shirt, 'id' | 'name' | 'color' | 'size'>
   ) | (
     { __typename?: 'Pants' }
-    & Pick<Pants, 'id' | 'name'>
-  )>> }
+    & Pick<Pants, 'id' | 'name' | 'color' | 'W' | 'L'>
+  )> }
 );
 
 
+export const CreatePantsDocument = gql`
+    mutation CreatePants($input: PantsInput!) {
+  createPants(input: $input) {
+    id
+  }
+}
+    `;
+export type CreatePantsMutationFn = Apollo.MutationFunction<CreatePantsMutation, CreatePantsMutationVariables>;
+
+/**
+ * __useCreatePantsMutation__
+ *
+ * To run a mutation, you first call `useCreatePantsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePantsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPantsMutation, { data, loading, error }] = useCreatePantsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreatePantsMutation(baseOptions?: Apollo.MutationHookOptions<CreatePantsMutation, CreatePantsMutationVariables>) {
+        return Apollo.useMutation<CreatePantsMutation, CreatePantsMutationVariables>(CreatePantsDocument, baseOptions);
+      }
+export type CreatePantsMutationHookResult = ReturnType<typeof useCreatePantsMutation>;
+export type CreatePantsMutationResult = Apollo.MutationResult<CreatePantsMutation>;
+export type CreatePantsMutationOptions = Apollo.BaseMutationOptions<CreatePantsMutation, CreatePantsMutationVariables>;
+export const CreateShirtDocument = gql`
+    mutation CreateShirt($input: ShirtInput!) {
+  createShirt(input: $input) {
+    id
+  }
+}
+    `;
+export type CreateShirtMutationFn = Apollo.MutationFunction<CreateShirtMutation, CreateShirtMutationVariables>;
+
+/**
+ * __useCreateShirtMutation__
+ *
+ * To run a mutation, you first call `useCreateShirtMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateShirtMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createShirtMutation, { data, loading, error }] = useCreateShirtMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateShirtMutation(baseOptions?: Apollo.MutationHookOptions<CreateShirtMutation, CreateShirtMutationVariables>) {
+        return Apollo.useMutation<CreateShirtMutation, CreateShirtMutationVariables>(CreateShirtDocument, baseOptions);
+      }
+export type CreateShirtMutationHookResult = ReturnType<typeof useCreateShirtMutation>;
+export type CreateShirtMutationResult = Apollo.MutationResult<CreateShirtMutation>;
+export type CreateShirtMutationOptions = Apollo.BaseMutationOptions<CreateShirtMutation, CreateShirtMutationVariables>;
 export const GetClothesDocument = gql`
     query getClothes {
   clothes {
     ... on Pants {
       id
       name
+      color
+      W
+      L
     }
     ... on Shirt {
       id
       name
+      color
+      size
     }
   }
 }

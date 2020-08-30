@@ -1,0 +1,23 @@
+@import "colors";
+
+html, body, form, fieldset, table, tr, td, img {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+input, button, select, textarea, optgroup, option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+html, body, #__next{
+  height: 100%;
+}
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0 auto;
+  color: $primaryText;
+}

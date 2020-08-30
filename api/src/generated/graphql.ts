@@ -22,7 +22,7 @@ export type Shirt = {
   __typename?: 'Shirt';
   id: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
-  color: ShirtColor;
+  color: Scalars['String'];
   size: Scalars['Int'];
 };
 
@@ -45,7 +45,7 @@ export type ClothesQueryInput = {
 export type Query = {
   __typename?: 'Query';
   _?: Maybe<Scalars['Boolean']>;
-  clothes: Array<Maybe<Clothes>>;
+  clothes: Array<Clothes>;
 };
 
 export type ShirtInput = {
@@ -197,7 +197,7 @@ export type ResolversParentTypes = {
 export type ShirtResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Shirt'] = ResolversParentTypes['Shirt']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  color?: Resolver<ResolversTypes['ShirtColor'], ParentType, ContextType>;
+  color?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   size?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
@@ -217,7 +217,7 @@ export type ClothesResolvers<ContextType = IContext, ParentType extends Resolver
 
 export type QueryResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  clothes?: Resolver<Array<Maybe<ResolversTypes['Clothes']>>, ParentType, ContextType>;
+  clothes?: Resolver<Array<ResolversTypes['Clothes']>, ParentType, ContextType>;
 };
 
 export type MutationResolvers<ContextType = IContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {

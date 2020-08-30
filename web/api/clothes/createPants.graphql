@@ -1,0 +1,5 @@
+mutation CreatePants($input: PantsInput!) {
+    createPants(input: $input) {
+        id
+    }
+}

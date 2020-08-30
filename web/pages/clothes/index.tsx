@@ -1,4 +1,7 @@
 import { useGetClothesQuery } from '../../api/graphql'
+
+import { ClothesList } from './components'
+import { Button, Layout, PageHeader } from '../../components'
 import Link from 'next/link'
 
 const Clothes = () => {
@@ -8,16 +11,16 @@ const Clothes = () => {
     return <div>loading</div>
   }
   return (
-    <>
-      <div>
-        {data?.clothes?.map(item => (
-          <span key={item?.id}>{item?.name}</span>
-        ))}
-      </div>
-      <Link href="clothes/add">
-        <a>Add new</a>
-      </Link>
-    </>
+    <Layout>
+      <PageHeader text="Manage Clothes">
+        <Link href="clothes/add">
+          <div>
+            <Button>+ Add new</Button>
+          </div>
+        </Link>
+      </PageHeader>
+      {data?.clothes && <ClothesList items={data?.clothes} />}
+    </Layout>
   )
 }
 

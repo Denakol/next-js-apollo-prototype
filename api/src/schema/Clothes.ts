@@ -10,7 +10,7 @@ export default gql`
   type Shirt {
     id: ID!
     name: String
-    color: ShirtColor!
+    color: String!
     size: Int!
   }
 
@@ -30,7 +30,7 @@ export default gql`
   }
 
   extend type Query {
-    clothes: [Clothes]!
+    clothes: [Clothes!]!
   }
 
   input ShirtInput {

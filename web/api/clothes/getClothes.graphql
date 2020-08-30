@@ -1,12 +1,18 @@
 query getClothes {
   clothes {
     ... on Pants {
-    id
+      id
       name
+      color
+      W
+      L
     }
     ... on Shirt {
-    id
+      id
       name
+      color
+      size
     }
   }
 }
+

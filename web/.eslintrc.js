@@ -14,11 +14,13 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     // 'plugin:jsx-a11y/recommended',
     // Prettier plugin and recommended rules
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
+  plugins: ['@typescript-eslint', 'react'],
   rules: {
     // Include .prettierrc.js rules
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
