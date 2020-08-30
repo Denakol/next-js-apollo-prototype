@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import { PageHeader } from '../components/Layout'
 
 const IndexPage = () => (
   <>
-    <h1>Hello 👋</h1>
+    <PageHeader text="Home Page" />
     <p>
       <Link href="/clothes">
         <a>Clothes Management</a>

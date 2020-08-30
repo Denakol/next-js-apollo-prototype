@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Link } from '../Link'
+import { NavLink } from './NavLink'
 import Head from 'next/head'
 import classes from './Layout.module.scss'
 
@@ -22,15 +22,15 @@ const Layout = ({ children }: Props) => (
     </header>
 
     <nav className={classes.sidebar}>
-      <Link className={classes.sidebar_item} href="/">
+      <NavLink className={classes.sidebar_item} href="/">
         Home
-      </Link>
-      <Link className={classes.sidebar_item} href="/about">
+      </NavLink>
+      <NavLink className={classes.sidebar_item} href="/about">
         About
-      </Link>
-      <Link className={classes.sidebar_item} href="/clothes">
+      </NavLink>
+      <NavLink className={classes.sidebar_item} href="/clothes">
         Clothes Management
-      </Link>
+      </NavLink>
     </nav>
 
     <div className={classes.content}>{children}</div>

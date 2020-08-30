@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers'
 import { Button, Field, Input } from '../../index'
+import classes from './AddPants.module.scss'
 
 interface AddPantsFormProps {
   isLoading: boolean
@@ -24,7 +25,7 @@ function AddPantsForm({ isLoading, onSubmit, onCancel }: AddPantsFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <div className={classes.formBody}>
         <Field id="name" error={errors.name} label="Name">
           <Input id="name" type="text" name="name" ref={register()} />
         </Field>

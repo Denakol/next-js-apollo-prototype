@@ -81,4 +81,5 @@ const AddNewClothes = () => {
     </>
   )
 }
+
 export default AddNewClothes

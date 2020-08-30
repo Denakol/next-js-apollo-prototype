@@ -3,6 +3,7 @@ import * as yup from 'yup'
 import { ShirtColor, ShirtInput } from '../../../api/graphql'
 import { yupResolver } from '@hookform/resolvers'
 import { Button, Field, Input } from '../../index'
+import classes from './AddShirtForm.module.scss'
 
 interface AddShirtFormProps {
   isLoading: boolean
@@ -23,7 +24,7 @@ function AddShirtForm({ isLoading, onSubmit, onCancel }: AddShirtFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <div className={classes.formBody}>
         <Field id="name" error={errors.name} label="Name">
           <Input id="name" type="text" name="name" ref={register()} />
         </Field>

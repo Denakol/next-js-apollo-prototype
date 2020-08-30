@@ -1,0 +1,15 @@
+@import "../../../theme/colors";
+
+.link {
+  color: $secondaryText;
+  text-decoration: none;
+
+  &:hover{
+    color: $primary
+  }
+
+}
+
+.activeLink{
+  color: $primary;
+}

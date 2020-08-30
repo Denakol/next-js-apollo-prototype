@@ -1,25 +1,15 @@
 import { useMemo } from 'react'
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
 function createApolloClient() {
-  console.log(process.env.NEXT_PUBLIC_API)
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({
       uri: process.env.NEXT_PUBLIC_API,
     }),
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            allPosts: concatPagination(),
-          },
-        },
-      },
-    }),
+    cache: new InMemoryCache(),
   })
 }
 

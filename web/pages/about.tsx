@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import { PageHeader } from '../components/Layout'
 
 const AboutPage = () => (
   <>
-    <h1>About</h1>
+    <PageHeader text="About" />
     <p>It is prototype for quick boostrapping</p>
     <p>
       <Link href="/">

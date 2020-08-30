@@ -1,8 +1,9 @@
-import { useGetClothesQuery } from '../../api/graphql'
+import { GetClothesDocument, useGetClothesQuery } from '../../api/graphql'
 
 import { ClothesList } from '../../components/Clothes/components'
 import { Button, PageHeader } from '../../components'
 import Link from 'next/link'
+import { initializeApollo } from '../../api/apolloClient'
 
 const Clothes = () => {
   const { data, loading } = useGetClothesQuery()
@@ -20,6 +21,19 @@ const Clothes = () => {
       {loading ? <div>Loading ...</div> : <div>{data?.clothes && <ClothesList items={data?.clothes} />}</div>}
     </>
   )
+}
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
+  await apolloClient.query({
+    query: GetClothesDocument,
+  })
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+    revalidate: 1,
+  }
 }
 
 export default Clothes
