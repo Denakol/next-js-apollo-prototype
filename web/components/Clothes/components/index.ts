@@ -1,3 +1,3 @@
-export { AddPantsForm } from './AddPantsForm'
-export { AddShirtForm } from './AddShirtForm'
+export { AddPantsForm } from './Forms/AddPantsForm'
+export { AddShirtForm } from './Forms/AddShirtForm'
 export { ClothesList } from './ClothesList'

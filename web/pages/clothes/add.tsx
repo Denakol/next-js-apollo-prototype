@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react'
 import { PantsInput, ShirtInput } from '../../api/graphql'
-import { AddPantsForm, AddShirtForm } from '../../components/Clothes/components'
 import { useRouter } from 'next/router'
-import { Card, Checkbox, Field, PageHeader } from '../../components'
 import classes from './add.module.scss'
-import { useCreatePants, useCreateShirt } from '../../components/Clothes/hooks'
+import { Card, Checkbox, Field, PageHeader } from '../../components'
+import { AddPantsForm, AddShirtForm } from '../../components'
+import { useCreatePants, useCreateShirt } from '../../components'
 
 const AddNewClothes = () => {
   const router = useRouter()

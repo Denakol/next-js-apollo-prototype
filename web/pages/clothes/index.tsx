@@ -1,7 +1,5 @@
 import { useGetClothesQuery } from '../../api/graphql'
-
-import { ClothesList } from '../../components/Clothes/components'
-import { Button, PageHeader } from '../../components'
+import { Button, PageHeader, ClothesList } from '../../components'
 import Link from 'next/link'
 
 const Clothes = () => {
@@ -17,7 +15,11 @@ const Clothes = () => {
         </Link>
       </PageHeader>
 
-      {loading ? <div>Loading ...</div> : <div>{data?.clothes && <ClothesList items={data?.clothes} />}</div>}
+      {loading ? (
+        <span>Loading ...</span>
+      ) : (
+        <div>{data?.clothes && <ClothesList items={data?.clothes} />}</div>
+      )}
     </>
   )
 }

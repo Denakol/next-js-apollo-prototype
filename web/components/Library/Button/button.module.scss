@@ -1,0 +1,59 @@
+@import "../../../theme/colors";
+
+
+.baseButton {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  height: 40px;
+  padding: 10px 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: transparent;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+.primary {
+  background-color: $primary;
+  color: white;
+
+  &:hover {
+    box-shadow: 0 16px 48px 0 transparentize($primary, 0.85)
+  }
+  &:active {
+    background-color: darken($primary, 5%);
+  }
+}
+
+.secondary {
+  border-color: $primary;
+  color: $primary;
+
+  &:hover {
+    background-color: $primary;
+    border-color: transparent;
+    color: white;
+  }
+  &:active {
+    background-color: darken($primary, 5%);
+  }
+}
+
+.danger {
+  background-color: $danger;
+  color: white;
+
+  &:hover {
+    box-shadow: 0 16px 48px 0 transparentize($danger, 0.85)
+  }
+  &:active {
+    background-color: darken($danger, 5%);
+  }
+}
+
+.baseButton + .baseButton{
+  margin-left: 16px;
+}
+
+

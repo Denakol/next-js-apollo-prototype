@@ -1,0 +1,5 @@
+@import "../../../../theme/input";
+
+.input {
+  @include input();
+}

@@ -1,6 +1,6 @@
-import { ClothesView } from './ClothesView'
+import { ClothesView } from './View/ClothesView'
 import { Clothes } from '../../../api/graphql'
-import { Card } from '../../Card'
+import { Card } from '../../Library'
 import classes from './ClothesList.module.scss'
 
 interface ClothesListProps {

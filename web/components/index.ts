@@ -1,6 +1,3 @@
-export { Button } from './Button'
-export { Card, CardField } from './Card'
-export { Layout, PageHeader } from './Layout'
-export { Field, Input, Checkbox } from './Form'
+export { Button, Card, CardField, Layout, PageHeader, Field, Input, Checkbox } from './Library'
 
 export * from './Clothes'

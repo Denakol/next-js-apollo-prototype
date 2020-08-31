@@ -1,0 +1,14 @@
+@import "../../../theme/colors";
+
+.cardField {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.cardFieldLabel {
+  color: $secondaryText
+}
+
+.cardFieldText {
+  padding-left: 8px;
+}

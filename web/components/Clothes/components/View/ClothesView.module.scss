@@ -1,0 +1,22 @@
+@import "../../../../theme/responsive";
+
+.clothesBody{
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+  }
+  @include desktop{
+    flex-direction: row;
+  }
+
+}
+
+.fieldsBlock{
+  flex:1;
+}
+
+.actionBlock{
+
+}
