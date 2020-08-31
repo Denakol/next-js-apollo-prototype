@@ -3,7 +3,7 @@ import React from 'react'
 import classes from './Field.module.scss'
 
 interface FieldProps {
-  error?: { message?: string; type: string }
+  error?: string
   id?: string
   label?: string
 }
@@ -16,7 +16,7 @@ function Field({ children, error, id, label }: React.PropsWithChildren<FieldProp
         </label>
       )}
       <div className={classes.control}>{children}</div>
-      {error && <Error message={error.message} type={error.type} />}
+      {error && <Error message={error} />}
     </div>
   )
 }

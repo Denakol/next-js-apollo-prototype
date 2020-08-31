@@ -1,22 +1,5 @@
-@import "theme/colors";
+@import "theme/input";
 
 .input {
-  border-radius: 8px;
-  font-size:0.875rem;
-  padding: 4px 16px;
-  min-height:40px;
-  border: solid 1px $border;
-  box-sizing: border-box;
-
-
-  &:hover,
-  &:focus,
-  &:focus-within {
-    outline: none;
-    border: solid 1px $primary;
-  }
-
-  &::placeholder {
-    color: $secondaryText;
-  }
+  @include input();
 }

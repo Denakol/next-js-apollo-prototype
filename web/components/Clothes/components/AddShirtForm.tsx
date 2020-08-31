@@ -1,9 +1,12 @@
-import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { ShirtColor, ShirtInput } from '../../../api/graphql'
-import { yupResolver } from '@hookform/resolvers'
 import { Button, Field, Input } from '../../index'
 import classes from './AddShirtForm.module.scss'
+import { Select } from '../../Form/Select'
+import { useMemo } from 'react'
+import { Colors } from '../../../types'
+import { useFormik } from 'formik'
+import { capitalizeFirstLetter } from '../../../utils'
 
 interface AddShirtFormProps {
   isLoading: boolean
@@ -18,21 +21,37 @@ const schema = yup.object().shape<ShirtInput>({
 })
 
 function AddShirtForm({ isLoading, onSubmit, onCancel }: AddShirtFormProps) {
-  const { register, handleSubmit, errors } = useForm<ShirtInput>({
-    resolver: yupResolver(schema),
+  const { handleSubmit, errors, values, handleChange } = useFormik<ShirtInput>({
+    initialValues: {
+      color: ShirtColor.White,
+      size: 10,
+    },
+    validationSchema: schema,
+    onSubmit: onSubmit,
   })
 
+  const colorsOptions = useMemo(
+    () => Colors.shirtColors.map(color => ({ value: color, label: capitalizeFirstLetter(color) })),
+    [Colors],
+  )
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit}>
       <div className={classes.formBody}>
         <Field id="name" error={errors.name} label="Name">
-          <Input id="name" type="text" name="name" ref={register()} />
+          <Input id="name" type="text" name="name" value={values.name || ''} onChange={handleChange} />
         </Field>
         <Field id="color" error={errors.color} label="Color">
-          <Input id="color" type="text" name="color" ref={register()} />
+          <Select
+            id="color"
+            name="color"
+            items={colorsOptions}
+            value={values.color}
+            onChange={handleChange}
+          />
         </Field>
         <Field id="size" error={errors.size} label="Size">
-          <Input id="size" type="number" name="size" ref={register()} />
+          <Input id="size" type="number" name="size" value={values.size} onChange={handleChange} />
         </Field>
       </div>
       <Button look="secondary" onClick={onCancel}>

@@ -1,0 +1,10 @@
+@import "theme/input";
+
+.select {
+  @include input();
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: pointer;
+}
