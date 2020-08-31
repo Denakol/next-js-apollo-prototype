@@ -8,12 +8,17 @@
 - Eslint + Prettier
 - graphql-codegen
 
+
 #### Docker
 
-````
-docker-compose up
-````
+- Run `docker-compose up`
+- Open `http://localhost:3000/`
 
+
+Ports:
+- 4000 - api
+- 3000 - web
+- 3306 - sql
 
 
 #### Manually
@@ -26,7 +31,7 @@ docker-compose up
 ##### Web
 - Set up api url in `web/.env`
 - Use `yarn dev` for development and `yarn build && yarn start` for production
-
+- Open `http://localhost:3000/`
 #### Notes
 
 There is graphql-codegen for preventing dummy coding of typings.
