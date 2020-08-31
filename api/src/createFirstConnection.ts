@@ -5,7 +5,7 @@ async function createFirstConnection(): Promise<{
   connection: Connection | null
   exception?: Error
 }> {
-  let i = 20
+  let i = 10
   let lastException = null
   while (i > 0) {
     try {
@@ -13,8 +13,8 @@ async function createFirstConnection(): Promise<{
     } catch (ex) {
       lastException = ex
       i--
+      await sleep(5000)
     }
-    await sleep(5000)
   }
   return {
     connection: null,

@@ -28,7 +28,7 @@
   "dependencies": {
     "apollo-server": "^2.16.1",
     "graphql": "^15.3.0",
-    "mysql": "^2.14.1",
+    "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.10",
     "ts-node": "^9.0.0",
     "typeorm": "0.2.25",
