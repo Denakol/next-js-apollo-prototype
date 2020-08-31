@@ -21,3 +21,18 @@ body {
   margin: 0 auto;
   color: $primaryText;
 }
+
+
+a{
+  color: $primary;
+  text-decoration: none;
+
+  &:hover{
+    color: darken($primary, 5%);
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: darken($primary, 10%);
+  }
+}

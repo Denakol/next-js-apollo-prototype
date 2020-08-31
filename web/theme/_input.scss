@@ -9,7 +9,8 @@
   padding: 4px 16px;
   min-height: 40px;
   min-width: 200px;
-
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
   &:hover,
   &:focus,
   &:focus-within {
