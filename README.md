@@ -1,5 +1,13 @@
 # Prototype for creation apps quickly
 
+#### Tech stack
+
+- MySql Database
+- Apollo Server+ TypeOrm
+- NextJs + Apollo Client + React + Formik + Yup validation
+- Eslint + Prettier
+- graphql-codegen
+
 #### Docker
 
 ````
