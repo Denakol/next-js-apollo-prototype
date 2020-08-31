@@ -4,6 +4,8 @@ services:
     build: './web'
     links:
       - api
+    depends_on:
+      - api
     ports:
       - "3000:3000"
     env_file:
@@ -13,6 +15,8 @@ services:
   api:
     build: './api'
     links:
+      - db
+    depends_on:
       - db
     ports:
       - "4000:4000"
