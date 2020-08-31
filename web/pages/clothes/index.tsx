@@ -23,17 +23,4 @@ const Clothes = () => {
   )
 }
 
-export async function getStaticProps() {
-  const apolloClient = initializeApollo()
-  await apolloClient.query({
-    query: GetClothesDocument,
-  })
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-    revalidate: 1,
-  }
-}
-
 export default Clothes
