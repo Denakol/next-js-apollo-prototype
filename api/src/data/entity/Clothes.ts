@@ -5,7 +5,7 @@ export class Clothes {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @Column({ default: '', nullable: true })
+  @Column({ default: '', nullable: true, type: 'nvarchar' })
   name: string
 
   @Column()

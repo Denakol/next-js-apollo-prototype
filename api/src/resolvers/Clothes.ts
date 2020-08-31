@@ -19,11 +19,8 @@ const Clothes: ClothesResolvers = {
 
 const Mutation: MutationResolvers = {
   createShirt: async (_, { input }, context) => {
-    console.log('sdfdf')
     const clothesRepository = context.getRepository(ClothesRepository)
-    const k = await clothesRepository.createShirt(input)
-    console.log(k)
-    return k
+    return await clothesRepository.createShirt(input)
   },
   createPants: async (_, { input }, context) => {
     const clothesRepository = context.getRepository(ClothesRepository)
