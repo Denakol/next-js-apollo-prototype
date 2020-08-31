@@ -32,7 +32,7 @@ function AddShirtForm({ isLoading, onSubmit, onCancel }: AddShirtFormProps) {
 
   const colorsOptions = useMemo(
     () => Colors.shirtColors.map(color => ({ value: color, label: capitalizeFirstLetter(color) })),
-    [Colors],
+    [],
   )
 
   return (

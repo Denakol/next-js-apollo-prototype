@@ -1,4 +1,4 @@
-import { PantsInput, ShirtInput } from '../../../api/graphql'
+import { PantsInput } from '../../../api/graphql'
 import * as yup from 'yup'
 import { Button, Field, Input } from '../../index'
 import classes from './AddPants.module.scss'
@@ -34,7 +34,7 @@ function AddPantsForm({ isLoading, onSubmit, onCancel }: AddPantsFormProps) {
 
   const colorsOptions = useMemo(
     () => Colors.baseColors.map(color => ({ value: color, label: capitalizeFirstLetter(color) })),
-    [Colors],
+    [],
   )
 
   return (
